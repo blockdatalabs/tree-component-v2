@@ -4,15 +4,20 @@
     <title>Component V2</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
     </head>
     <body>
-      <div id="observablehq-ce9daed6"></div>
-      <p>Credit: <a href="https://observablehq.com/d/6d8519be616bcd04@124">Component Exploration V2 Network D3 Force graph by blockdatalabs</a></p>
+      <div id="observablehq-tree-ce9daed6"></div>
+      <div id="observablehq-myChart-ce9daed6"></div>
+      <p>Credit: <a href="https://observablehq.com/d/6d8519be616bcd04@124">Component Exploration V2 Network D3 Force graph by blockdatalabs</a></p>   
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
       <script type="module">
       import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
       import define from "https://api.observablehq.com/d/6d8519be616bcd04@124.js?v=3";
-      new Runtime().module(define, Inspector.into("#observablehq-ce9daed6"));
+      new Runtime().module(define, name => {
+        if (name === "tree") return new Inspector(document.querySelector("#observablehq-tree-ce9daed6"));
+        if (name === "myChart") return new Inspector(document.querySelector("#observablehq-myChart-ce9daed6"));
+      });
       </script>
     </body>
 </html>
